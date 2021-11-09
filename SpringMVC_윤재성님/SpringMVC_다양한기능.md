@@ -80,8 +80,8 @@ Context Path : Servlet/JSP 에서 첫 번째 경로, 한 서버에서 각 웹 �
     ```java
     	@GetMapping(value = "/test4/{data1}/{data2}/{data3}", method = RequestMethod.GET)
     	public String test4(@PathVariable int data1, 
-    											@PathVariable int data2, 
-    											@PathVariable int data3) {
+			@PathVariable int data2, 
+			@PathVariable int data3) {
     }
     ```
     
@@ -100,8 +100,8 @@ Context Path : Servlet/JSP 에서 첫 번째 경로, 한 서버에서 각 웹 �
     ```java
     	@GetMapping(value = "/test5", method = RequestMethod.GET)
     	public String test5(@RequestParam int data1, 
-    											@RequestParam int data2,
-    											@RequestParam int data3) {
+			@RequestParam int data2,
+			@RequestParam int data3) {
     }
     ```
     
