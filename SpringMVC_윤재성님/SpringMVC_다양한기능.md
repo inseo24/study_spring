@@ -209,3 +209,101 @@ ModelAndView
 		return mv;
 	}
 ```
+
+### 커맨드 객체
+
+클라이언트에서 오는 파라미터 데이터를 주입 받기 위해 사용하는 객체
+
+자동으로 HttpServletRequest 객체에 담김
+
+DataBean.java
+
+```jsx
+public class DataBean {
+	private String data1;
+	public String getData1() {
+		return data1;
+	}
+	public void setData1(String data1) {
+		this.data1 = data1;
+	}
+	public String getData2() {
+		return data2;
+	}
+	public void setData2(String data2) {
+		this.data2 = data2;
+	}
+	private String data2;
+	
+}
+```
+
+TestController.java
+
+```jsx
+@Controller
+public class TestController {
+
+	@PostMapping("/test1")
+	public String test1(~~@ModelAttribute~~ DataBean bean) {
+		// modelAttribute는 생략 가능
+		return "test1";
+	}
+}
+```
+
+Request에 저장되는 이름을 지정하고 싶으면 ModelAttribute 어노테이션에 지정 가능
+
+```jsx
+@PostMapping("/test2")
+	public String test2(@ModelAttribute("testData") DataBean bean) {
+		return "test2";
+	}
+```
+
+### Form 태그
+
+Spring에서는 <form:태그명> 형태로 커스텀 태그 제공함, 이걸로 Model 객체에 들어있는 값을 form 요소에 주입 가능.
+
+보통 회원 정보 수정 등에 사용
+
+```jsx
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<form:form modelAttribute="userDataBean" action='result'>
+		이름 : <form:input path='user_name' /><br/>
+</form:form>
+```
+
+### Redirect와 Forward
+
+Redirect : HttpServletRequest 객체는 소멸 후 새로 생성되며 HttpSession 객체가 그대로 유지됨
+
+응답결과로 받은 요청 주소를 직접 요청하게 된다. 
+
+```jsx
+@GetMapping("/test1")
+public String test1() {
+
+	return "redirect:/sub1";
+}
+
+@GetMapping("/sub1")
+public String sub1() {
+	return "sub1";
+}
+```
+
+forward : 서버 상에서 코드의 흐름이 다른 곳으로 이동됨, 주소창의 주소는 변경되지 않고 HttpServletRequest, HttpSession 모두 유지된다.
+
+```jsx
+@GetMapping("/test2")
+public String test2() {
+	return "forward:/sub2";
+}
+
+@GetMapping("/sub2")
+public String sub2() {
+	return "sub2";
+}
+```
