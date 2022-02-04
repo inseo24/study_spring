@@ -1,4 +1,4 @@
-package com.example.dowon_lee.bean;
+package com.example.dowon_lee.helloWorld;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
