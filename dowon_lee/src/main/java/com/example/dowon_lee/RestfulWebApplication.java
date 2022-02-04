@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DowonLeeApplication {
+public class RestfulWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DowonLeeApplication.class, args);
+        SpringApplication.run(RestfulWebApplication.class, args);
     }
 
 }
