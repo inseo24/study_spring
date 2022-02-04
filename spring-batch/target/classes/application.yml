@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active : local
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+  batch:
+    jdbc:
+      initialize-schema: embedded
+---
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    url: jdbc:mysql://database-1.cq7ffthx1phg.ap-northeast-2.rds.amazonaws.com/test1?useUnicode=true&characterEncoding=utf-8
+    username: admin
+    password: tjdls!2278
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  batch:
+    jdbc:
+      initialize-schema: always
