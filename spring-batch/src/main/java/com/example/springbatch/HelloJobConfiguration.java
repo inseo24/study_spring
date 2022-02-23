@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 // job -> step -> tasklet
 // business login in tasklet
 @RequiredArgsConstructor
-@Configuration
+//@Configuration
 public class HelloJobConfiguration {
 
     private final JobBuilderFactory jobBuilderFactory;
