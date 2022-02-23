@@ -1,0 +1,30 @@
+
+
+spring:
+  datasource:
+    url: jdbc:h2:/Users/seo/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8081
+
+
+
+jwt:
+  header: Authorization
+  secret: c2VvaW4tand0LWV4YW1wbGUtaGVsbG8taGktd29ybGQtaW0tdGlyZWQtYWRzamZsa2Fqc2RrbGZqa2xzYWRqZmxrYWpzZGxrZmphc2tsZGpma2xzYWRqZmtsanNhZGtsZmprbGFzZGpma2xqYXNkbGtmamtsc2FkamtmbAo=
+  token-validity-in-seconds: 86400
